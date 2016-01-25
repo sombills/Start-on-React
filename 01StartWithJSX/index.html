@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel='stylesheet' href='../lib/bootstrap/dist/css/bootstrap.min.css'>
+  <title>React</title>
+</head>
+<body>
+  <script src='../lib/jquery/dist/jquery.min.js'></script>
+  <script src='../lib/bootstrap/dist/js/bootstrap.min.js'></script>
+
+  <!-- React.js -->
+  <script src="https://fb.me/react-with-addons-0.14.3.js"></script>
+  <script src="https://fb.me/react-dom-0.14.3.js"></script>
+  <script src="https://fb.me/JSXTransformer-0.12.2.js"></script>
+</body>
+
+<script type='text/jsx'>
+  // react component class
+  var HelloWorld = React.createClass({
+    render: function(){
+      return <div className='container'><span className='h2'>Start on React.js</span></div>
+    }
+  });
+  
+  // ask React to render the component class
+  var element = React.createElement(HelloWorld);
+  
+  // When we ask react to render this class, we will tell it
+  // where to place the rendered element in the dom
+  ReactDOM.render(element, document.body)  
+
+</script>
+
+</html>
