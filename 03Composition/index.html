@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel='stylesheet' href='../lib/bootstrap/dist/css/bootstrap.min.css'>
+  <title>React</title>
+</head>
+<body>
+  <script src='../lib/jquery/dist/jquery.min.js'></script>
+  <script src='../lib/bootstrap/dist/js/bootstrap.min.js'></script>
+
+  <!-- React.js -->
+  <script src="https://fb.me/react-with-addons-0.14.3.js"></script>
+  <script src="https://fb.me/react-dom-0.14.3.js"></script>
+  <script src="https://fb.me/JSXTransformer-0.12.2.js"></script>
+</body>
+
+<script type='text/jsx'>
+  // 1. react component class - Inner
+  var ActionButton = React.createClass({
+    render: function(){
+      return <button type='button' className='btn btn-primary'>
+                {this.props.actionText} <span className='badge'>{this.props.actionCount}</span>
+            </button>
+    }
+  })
+
+  // 2. react component class - Outer
+  var Thumbnail = React.createClass({
+    render: function(){
+      return <div className="row">
+              <div className="col-sm-6 col-md-4">
+                <div className="thumbnail">
+                  <img src={this.props.imageUrl} alt="XXX" />
+                  <div className="caption">
+                    <h3>{this.props.title}</h3>
+                    <p>{this.props.description}</p>
+                    <p>
+                      <ActionButton actionText={this.props.action} actionCount={this.props.actionCount} />
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+    }
+  });
+  
+  // ask React to render the component class
+  var options = {
+    imageUrl: 'http://blog.addthiscdn.com/wp-content/uploads/2014/11/addthis-react-flux-javascript-scaling.png'
+    ,title: 'React.JS'
+    ,description: 'Learning React.JS is fun and fast, but no furious. (Too fun to furious) - Let\'s enjoy learning React.JS from now !!!!! !!!!!'
+    ,action: 'View Comments'
+    ,actionCount: 50
+  };
+  var element = React.createElement(Thumbnail, options);
+  
+  // When we ask react to render this class, we will tell it
+  // where to place the rendered element in the dom
+  ReactDOM.render(element, document.body)  
+
+</script>
+
+</html>
